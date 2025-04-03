@@ -37,7 +37,7 @@ const App = () => {
      localStorage.setItem("todos", JSON.stringify(todos))
   })
   return (
-    <>
+    <div className="flex items-center">
      <form onSubmit={handleSubmit}>
        <input type="text" name="title" placeholder="Add Task"/>
        <button type="submit">Add</button>
@@ -50,7 +50,7 @@ const App = () => {
         </label>
       </div>
     ))}
-    </>
+    </div>
   )
 }
 
