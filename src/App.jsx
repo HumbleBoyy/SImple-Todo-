@@ -1,17 +1,6 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 
-const initialTodos = [
-  {
-    id: 1,
-    title: "Todo 1",
-    complete: false,
-  },
-  {
-    id: 2,
-    title: "Todo 2",
-    complete: false,
-  },
-];
+const initialTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
 const reducer = (state, action) => {
   switch(action.type){
@@ -44,6 +33,9 @@ const App = () => {
   }
   e.target.reset()
  }
+  useEffect(()=> {
+     localStorage.setItem("todos", JSON.stringify(todos))
+  })
   return (
     <>
      <form onSubmit={handleSubmit}>
