@@ -37,10 +37,10 @@ const App = () => {
      localStorage.setItem("todos", JSON.stringify(todos))
   })
   return (
-    <div className="flex items-center">
+    <div className="flex flex-col items-center justify-center pt-10">
      <form onSubmit={handleSubmit}>
-       <input type="text" name="title" placeholder="Add Task"/>
-       <button type="submit">Add</button>
+       <input className="border-2 border-blue-600 py-1 px-5 rounded-[2px] text-[16px]" type="text" name="title" placeholder="Add Task"/>
+       <button className="border-2 border-green-600 bg-green-600 text-white py-1 px-5 rounded-[2px]" type="submit">Add</button>
      </form>
      {todos.map((item)=> (
       <div key={item.id}>
@@ -49,7 +49,7 @@ const App = () => {
           {item.title}
         </label>
       </div>
-    ))}
+     ))}
     </div>
   )
 }
