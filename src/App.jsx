@@ -39,7 +39,7 @@ const App = () => {
   return (
     <div className="flex flex-col items-center justify-center pt-10">
      <form onSubmit={handleSubmit}>
-       <input className="border-2 border-blue-600 py-1 px-5 rounded-[2px] text-[16px]" type="text" name="title" placeholder="Add Task"/>
+       <input className="border-2 outline-none border-blue-600 py-1 px-5 rounded-[2px] text-[16px]" type="text" name="title" placeholder="Add Task"/>
        <button className="border-2 border-green-600 bg-green-600 text-white py-1 px-5 rounded-[2px]" type="submit">Add</button>
      </form>
      {todos.map((item)=> (
