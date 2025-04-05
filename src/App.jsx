@@ -7,6 +7,14 @@ const reducer = (state, action) => {
     case "ADD":
       return  [...state, {id:state.length + 1, title:action.title, complete:false}];
 
+      case "EDIT":
+        return state.map((item)=> {
+          if(item.id === action.payload){
+            return {...item, title:action.title}
+          }
+
+          return item
+        })
     case "DELETE":
       return state.filter(item => item.id !== action.payload);
 
@@ -43,6 +51,13 @@ const App = () => {
   const handleDelete = (id) => {
      dispatch({type:"DELETE", payload:id})
   }
+
+  const handleEdit = (id) => {
+    const title  = prompt("Enter new Title")
+    if(title.trim()){
+       dispatch({type:"EDIT",  payload: id, title})
+    }
+  }
   return (
     <div className="flex flex-col items-center justify-center pt-10">
      <form onSubmit={handleSubmit} className="w-[500px] flex justify-center mx-auto">
@@ -54,9 +69,10 @@ const App = () => {
       <div key={item.id} className="flex justify-between items-center bg-slate-600 py-2 w-[500px] px-3">
         <label className="flex gap-2 text-xl">
           <input type="checkbox" className={``} checked={item.complete} onChange={()=> handleComplete(item)}/>
-         {index + 1} {item.title}
+         {index + 1} <strong className="line-clamp-1 w-[200px]">{item.title}</strong>
         </label>
         <div className="flex gap-2">
+          <button onClick={()=> handleEdit(item.id)} className="bg-blue-600 py-2 px-3">Edit</button>
           <button onClick={()=> handleDelete(item.id)} className="bg-red-600 py-2 px-3">Delete</button>
         </div>
       </div>
