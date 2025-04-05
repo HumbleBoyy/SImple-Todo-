@@ -53,7 +53,7 @@ const App = () => {
      {todos.map((item, index)=> (
       <div key={item.id} className="flex justify-between items-center bg-slate-600 py-2 w-[500px] px-3">
         <label className="flex gap-2 text-xl">
-          <input type="checkbox" checked={item.complete} onChange={()=> handleComplete(item)}/>
+          <input type="checkbox" className={``} checked={item.complete} onChange={()=> handleComplete(item)}/>
          {index + 1} {item.title}
         </label>
         <div className="flex gap-2">
