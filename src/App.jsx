@@ -66,14 +66,14 @@ const App = () => {
      </form>
      <div className="flex flex-col gap-2 mt-5">
      {todos.map((item, index)=> (
-      <div key={item.id} className="flex justify-between items-center bg-slate-600 py-2 w-[500px] px-3">
+      <div key={item.id} className={`${item.complete === true ? "bg-green-600" : " bg-slate-600 "} py-2 w-[500px] px-3 flex justify-between items-center`}>
         <label className="flex gap-2 text-xl">
-          <input type="checkbox" className={``} checked={item.complete} onChange={()=> handleComplete(item)}/>
+          <input   type="checkbox"  checked={item.complete}  className={item.complete && "disabled"} onChange={()=> handleComplete(item)}/>
          {index + 1} <strong className="line-clamp-1 w-[200px]">{item.title}</strong>
         </label>
         <div className="flex gap-2">
-          <button onClick={()=> handleEdit(item.id)} className="bg-blue-600 py-2 px-3">Edit</button>
-          <button onClick={()=> handleDelete(item.id)} className="bg-red-600 py-2 px-3">Delete</button>
+          <button  onClick={()=> handleEdit(item.id)} disabled={item.complete}  className={`bg-blue-600 py-2 px-3`}>Edit</button>
+          <button  onClick={()=> handleDelete(item.id)} className="bg-red-600 py-2 px-3">Delete</button>
         </div>
       </div>
      ))}
