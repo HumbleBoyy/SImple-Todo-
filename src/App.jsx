@@ -53,7 +53,7 @@ const App = () => {
   }
 
   const handleEdit = (id) => {
-    const title  = prompt("Enter new Title")
+    const title  = prompt("Edit the task title")
     if(title.trim()){
        dispatch({type:"EDIT",  payload: id, title})
     }
